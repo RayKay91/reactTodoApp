@@ -35,7 +35,7 @@ class App extends React.Component {
     return (
       <>
         <Title text="Welcome to your Todo App" />
-        {this.state.showErrorMessage ? <ErrorMessage /> : null}
+        {this.state.showErrorMessage && <ErrorMessage />}
         <Form
           onChange={this.handleChange}
           onSubmit={this.handleSubmit}
