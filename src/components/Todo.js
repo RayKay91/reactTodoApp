@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Todo({ text }) {
-  const handleClick = (e) => e.target.parentNode.remove();
-  const handleCompletedClick = (e) =>
-    (e.target.style.textDecoration = 'line-through');
+function Todo({ text, handleDelete }) {
+  const handleClick = (e) => {
+    handleDelete(e);
+  };
 
   const styles = {
     display: 'flex',
@@ -11,7 +11,7 @@ function Todo({ text }) {
 
   return (
     <div style={styles}>
-      <li onClick={handleCompletedClick}>{text}</li>
+      <li>{text}</li>
       <button onClick={handleClick}>X</button>
     </div>
   );

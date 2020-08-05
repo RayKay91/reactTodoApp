@@ -31,6 +31,12 @@ class App extends React.Component {
     this.setState({ formValue: e.target.value });
   };
 
+  handleDelete = (id) => {
+    const todos = [...this.state.todoItems];
+    todos.splice(id, 1);
+    this.setState({ todoItems: todos });
+  };
+
   render() {
     return (
       <>
@@ -43,7 +49,13 @@ class App extends React.Component {
         />
         <TodoItems>
           {this.state.todoItems.map((todo, index) => {
-            return <Todo key={index} text={todo} />;
+            return (
+              <Todo
+                key={index}
+                text={todo}
+                handleDelete={() => this.handleDelete(index)}
+              />
+            );
           })}
         </TodoItems>
         <h5>
