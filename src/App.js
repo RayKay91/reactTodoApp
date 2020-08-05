@@ -40,7 +40,7 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <Title text="Welcome to your Todo App" />
+        <Title text="Welcome to your To-do App" />
         {this.state.showErrorMessage && <ErrorMessage />}
         <Form
           onChange={this.handleChange}
@@ -58,10 +58,12 @@ class App extends React.Component {
             );
           })}
         </TodoItems>
-        <h5>
-          To mark items as complete you can click them. Click the delete button
-          to remove them from the list.
-        </h5>
+        {this.state.todoItems.length === 0 ? null : (
+          <h5>
+            To mark items as complete you can click them. Click the delete
+            button to remove them from the list.
+          </h5>
+        )}
       </>
     );
   }
