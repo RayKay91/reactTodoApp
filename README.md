@@ -1,5 +1,5 @@
 # I made this utility app for keeping track of to-dos.
-There are two branches for this repo, one which is class based, and the other named 'reactHooks', has been refactored to using React hooks.
+There are two branches for this repo, one which is class based, and the other named 'reactHooks', has been refactored to use React hooks, and class based components have been converted to function based components.
 
 
 
