@@ -1,5 +1,6 @@
 /** @jsx jsx */
-import React from 'react';
+// eslint-disable-next-line
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 
 import { jsx, css } from '@emotion/core';
@@ -28,7 +29,6 @@ const styles = (isChecked) => css`
     text-decoration: line-through;
     `}
 `;
-console.log('hello');
 
 const Button = styled.button`
   border: none;
@@ -47,30 +47,30 @@ const Button = styled.button`
   }
 `;
 
-class Todo extends React.Component {
-  state = { isChecked: false };
+function Todo({ handleDelete, text }) {
+  const [isChecked, setIsChecked] = useState(false);
 
-  handleClick = (e) => {
-    this.props.handleDelete(e);
+  const handleClick = (e) => {
+    handleDelete(e);
   };
 
-  handleChecked = () => {
-    this.state.isChecked
-      ? this.setState({ isChecked: false })
-      : this.setState({ isChecked: true });
+  const handleChecked = () => {
+    if (isChecked) {
+      setIsChecked(false);
+    } else {
+      setIsChecked(true);
+    }
   };
 
-  render() {
-    return (
-      <Div>
-        <li css={styles(this.state.isChecked)}>{this.props.text}</li>
-        <Button onClick={this.handleChecked}>✓</Button>
-        <Button deleteButton onClick={this.handleClick}>
-          X
-        </Button>
-      </Div>
-    );
-  }
+  return (
+    <Div>
+      <li css={styles(isChecked)}>{text}</li>
+      <Button onClick={handleChecked}>✓</Button>
+      <Button deleteButton onClick={handleClick}>
+        X
+      </Button>
+    </Div>
+  );
 }
 
 export default Todo;
