@@ -1,4 +1,9 @@
+#A simple utility to-do app
+
+A simple utility app that allows creation, deletion and completion marking of to-dos. This branch contains the code that has been refactored from class based components to using functional based components and hooks.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 
 ## Available Scripts
 
