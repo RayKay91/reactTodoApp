@@ -3,6 +3,8 @@ There are two branches for this repo, the master branch - which is class based, 
 
 Styled using @emotion
 
+You can view and test the to-do app here: raykay91-todo-app.netlify.app
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
