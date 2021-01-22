@@ -2,6 +2,10 @@
 
 A simple utility app that allows creation, deletion and completion marking of to-dos. This branch contains the code that has been refactored from class based components to functional based components and hooks.
 
+It is deployed on Netlify and you can view and test the app here: https://weather-checker-app.netlify.app
+
+Something to improve upon would be the loading animation. At the moment the request happens so fast that the loading icon is only shown for a split second which can result in a non-smooth viewing experience when submitting the form.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 
