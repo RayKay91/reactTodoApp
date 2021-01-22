@@ -5,20 +5,25 @@ import TodoItems from './components/TodoItems';
 import Todo from './components/Todo';
 import ErrorMessage from './components/ErrorMessage';
 import './App.css';
-
+import {useSelector, useDispatch} from 'react-redux'
+import {todoAdded, todoRemover} from './actionGenerators'
 function App() {
+
+  const todoItems = useSelector(state => state)
+  const dispatch = useDispatch()
+ 
+
   const [formValue, setFormValue] = useState('');
-  const [todoItems, setTodoItems] = useState([]);
   const [showErrorMessage, setShowErrorMessage] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formValue === '') {
+    if (!formValue) {
       setShowErrorMessage(true);
       return;
     } else {
       if (showErrorMessage) setShowErrorMessage(false);
-      setTodoItems([...todoItems, formValue]);
+      dispatch(todoAdded(formValue))
       setFormValue('');
     }
   };
@@ -28,9 +33,8 @@ function App() {
   };
 
   const handleDelete = (id) => {
-    const todos = [...todoItems];
-    todos.splice(id, 1);
-    setTodoItems(todos);
+   
+    dispatch(todoRemover(id))
   };
 
   return (
@@ -38,23 +42,28 @@ function App() {
       <Title text="Welcome to your To-do App" />
       {showErrorMessage && <ErrorMessage />}
       <Form onChange={handleChange} onSubmit={handleSubmit} value={formValue} />
-      <TodoItems>
-        {todoItems.map((todo, index) => {
+      {todoItems && <TodoItems>
+
+        {todoItems.map((todo) => {
           return (
             <Todo
-              key={index}
-              text={todo}
-              handleDelete={() => handleDelete(index)}
+              key={todo.id}
+              text={todo.todo}
+              handleDelete={() => handleDelete(todo.id)}
             />
           );
         })}
-      </TodoItems>
+
+      </TodoItems>}
+      
+    
+    
       {todoItems.length === 0 ? null : (
         <h5>
           To mark items as complete you can click them. Click the delete button
           to remove them from the list.
         </h5>
-      )}
+      )} 
     </>
   );
 }

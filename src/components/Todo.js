@@ -55,11 +55,7 @@ function Todo({ handleDelete, text }) {
   };
 
   const handleChecked = () => {
-    if (isChecked) {
-      setIsChecked(false);
-    } else {
-      setIsChecked(true);
-    }
+    setIsChecked(!isChecked)
   };
 
   return (
